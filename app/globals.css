@@ -1,0 +1,222 @@
+@import "tailwindcss";
+
+:root {
+  --font-sans-fallback: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display-fallback: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --bg-color: #f8fafc;
+  --surface-color: #ffffff;
+  --border-color: #e2e8f0;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+
+  --primary-light: #eef2ff;
+  --secondary-light: #ecfdf5;
+  --accent-light: #fffbeb;
+  --danger-light: #fef2f2;
+  
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.04);
+  --border-glass: rgba(226, 232, 240, 0.8);
+  --bg-glass: rgba(255, 255, 255, 0.75);
+
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+}
+
+.dark {
+  --bg-color: #0b0f17;
+  --surface-color: #121b2d;
+  --border-color: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+
+  --primary-light: rgba(99, 102, 241, 0.15);
+  --secondary-light: rgba(16, 185, 129, 0.15);
+  --accent-light: rgba(245, 158, 11, 0.15);
+  --danger-light: rgba(239, 68, 68, 0.15);
+  
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --bg-glass: rgba(18, 27, 45, 0.75);
+
+  --slate-50: #0f172a;
+  --slate-100: #1e293b;
+  --slate-200: #334155;
+  --slate-300: #475569;
+  --slate-400: #64748b;
+  --slate-500: #94a3b8;
+  --slate-600: #cbd5e1;
+  --slate-700: #e2e8f0;
+  --slate-800: #f1f5f9;
+  --slate-900: #f8fafc;
+}
+
+@theme {
+  --font-sans: var(--font-inter), var(--font-sans-fallback);
+  --font-display: var(--font-outfit), var(--font-display-fallback);
+
+  --color-primary: #6366f1;
+  --color-primary-dark: #4f46e5;
+  --color-primary-light: var(--primary-light);
+  --color-secondary: #10b981;
+  --color-secondary-light: var(--secondary-light);
+  --color-accent: #f59e0b;
+  --color-accent-light: var(--accent-light);
+  --color-danger: #ef4444;
+  --color-danger-light: var(--danger-light);
+  --color-bg: var(--bg-color);
+  --color-surface: var(--surface-color);
+  --color-muted: var(--text-muted);
+  --color-border: var(--border-color);
+  
+  --color-slate-50: var(--slate-50);
+  --color-slate-100: var(--slate-100);
+  --color-slate-200: var(--slate-200);
+  --color-slate-300: var(--slate-300);
+  --color-slate-400: var(--slate-400);
+  --color-slate-500: var(--slate-500);
+  --color-slate-600: var(--slate-600);
+  --color-slate-700: var(--slate-700);
+  --color-slate-800: var(--slate-800);
+  --color-slate-900: var(--slate-900);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  height: 100%;
+  font-family: var(--font-sans);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100%;
+  background-color: var(--color-bg);
+  color: var(--color-slate-800);
+  font-family: var(--font-sans);
+  overscroll-behavior: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Animations ── */
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scaleIn {
+  from { transform: scale(0.96); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+@keyframes slideInRight {
+  from { transform: translateX(110%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+@keyframes slideInDown {
+  from { transform: translateY(-12px); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+@keyframes confetti-fall {
+  0%   { transform: translateY(-20px) rotate(0deg);   opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+.animate-slide-up    { animation: slideUp    0.32s cubic-bezier(0.32, 0.72, 0, 1) forwards; }
+.animate-fade-in     { animation: fadeIn     0.18s ease forwards; }
+.animate-scale-in    { animation: scaleIn    0.18s ease forwards; }
+.animate-slide-right { animation: slideInRight 0.25s ease forwards; }
+.animate-slide-down  { animation: slideInDown  0.18s ease forwards; }
+
+/* ── Skeleton ── */
+.skeleton {
+  background: linear-gradient(90deg, #f1f5f9 25%, #e9eef4 50%, #f1f5f9 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 12px;
+}
+
+/* ── Utilities ── */
+.pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+.pt-safe { padding-top:    env(safe-area-inset-top, 0px); }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Confetti ── */
+.confetti-piece {
+  position: fixed;
+  top: -20px;
+  width: 10px;
+  height: 10px;
+  animation: confetti-fall 3s ease-in forwards;
+  z-index: 9999;
+  pointer-events: none;
+  border-radius: 2px;
+}
+
+/* ── Input / Select focus ring ── */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+}
+
+/* ── Scrollbar styling (desktop) ── */
+@media (min-width: 1024px) {
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+}
+
+/* ── Sidebar transition ── */
+.sidebar-link {
+  transition: background 0.15s, color 0.15s;
+}
+.sidebar-link:hover {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+}
+.sidebar-link.active {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* ── Headings font family ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* ── Glassmorphism ── */
+.bg-glass {
+  background-color: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.border-glass {
+  border: 1px solid var(--border-glass);
+}
+.shadow-glass {
+  box-shadow: var(--shadow-glass);
+}
